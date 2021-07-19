@@ -4,10 +4,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class BasketPage extends BasePage{
-	@FindBy(xpath = "//h1[text()='Your basket']")
-	WebElement pageTitle;
+	@FindBy(xpath = "//div[@class = 'basketHeaderButtons']/a[@class = 'checkout-btn btn optimizely-control']")
+	WebElement checkoutButton;
 
-	public String getPageTitle() {
-		return pageTitle.getText();
+	public void clickOnCheckoutButton() {
+		clickElement(checkoutButton);
 	}
 }

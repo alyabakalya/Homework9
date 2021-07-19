@@ -1,14 +1,9 @@
 package Pages;
 
-
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-import cucumberDriver.DriverManager;
-
 public class HomePage extends BasePage{
-	private static final String HOME_PAGE_URL = "https://www.bookdepository.com/";
-
 	@FindBy(xpath = "//input[@name='searchTerm']")
 	WebElement searchInput;
 
@@ -21,23 +16,28 @@ public class HomePage extends BasePage{
    @FindBy(xpath = "//div[@class = 'user-nav']//a[text() = 'My Account']")
 	WebElement myAccountButton;
 
-   public void openHomePage() {
-   	DriverManager.getDriver().get(HOME_PAGE_URL);
-	}
+   @FindBy(xpath = "//div[@class='message-success']/div[@class='text']")
+	WebElement successfulRegisterMessage;
 
 	public void enterSearchTerm(String searchTerm) {
-		searchInput.sendKeys(searchTerm);
+   	sendValueToInputField(searchInput, searchTerm);
 	}
 
 	public void clickOnSearchButton() {
-		searchButton.click();
+		clickElement(searchButton);
 	}
 
-	public void goToJoinPage() {
-   	signInJoinButton.click();
+	public String getSuccessfulRegisterMessage() {
+		return getTextValue(successfulRegisterMessage);
 	}
 
-	public void goToMyAccountPage() {
-   	myAccountButton.click();
+	public void clickOnSignInJoinButton() {
+   	clickElement(signInJoinButton);
 	}
+
+	public void clickOnMyAccountButton() {
+   	clickElement(myAccountButton);
+	}
+
+
 }

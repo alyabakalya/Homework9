@@ -1,34 +1,32 @@
 package cucumberStepDefinitions;
 
 import org.junit.Assert;
-import Pages.HomePage;
-import Pages.SearchResultsPage;
+
+import Pages.*;
+import cucumberDriver.DriverManager;
 import io.cucumber.java.en.*;
 
 public class SearchStepDefinitions {
+	private BasePage basePage = new BasePage();
 	private HomePage homePage = new HomePage();
-	private SearchResultsPage searchResultsPage = new SearchResultsPage();
 
-	String searchTerm = "lord of the rings";
-	String expectedTitle = "Search results for".concat(" ").concat(searchTerm);
-
-	@Given("A user opens Book Depository web site")
+	@Given("User is at Home Page")
 	public void openHomePage() {
-		homePage.openHomePage();
+		PageNavigation.openPage(DriverManager.getDriver(), "https://www.bookdepository.com/");
 	}
 
-	@When("A user enters a search term into the search input field")
-	public void enterSearchTerm() {
+	@When("^User enters ([\\w\\s]+) into the search input")
+	public void enterSearchTerm(String searchTerm) {
 		homePage.enterSearchTerm(searchTerm);
 	}
 
-	@And("A user clicks on Search button")
+	@And("^User clicks on Search button$")
 	public void clickOnSearchButton() {
 		homePage.clickOnSearchButton();
 	}
 
-	@Then("Search Results page with correct title is displayed")
-	public void searchPageResultsTitleIsDisplayed() {
-		Assert.assertEquals("Page title is incorrect", expectedTitle, searchResultsPage.getPageTitle());
+	@Then("^Search Results Page with URL ((?:http|https):\\/\\/[\\w+./?=&]+) is displayed$")
+	public void verifyHomePageURL(String expectedURL) {
+		Assert.assertEquals("Page URL is incorrect" , expectedURL, basePage.getPageUrl());
 	}
 }

@@ -24,12 +24,12 @@ public class JoinPage extends BasePage{
 
 	public void enterUserInfo(String name, String email, String password) {
 		DriverManager.getDriver().switchTo().frame(formFrame);
-		nameInputField.sendKeys(name);
-		emailInputField.sendKeys(email);
-		passwordInputField.sendKeys(password);
+		sendValueToInputField(nameInputField, name);
+		sendValueToInputField(emailInputField, email);
+		sendValueToInputField(passwordInputField,password);
 	}
 
 	public void clickOnCreateYourAccountButton() {
-		createYourAccountButton.click();
+		clickElement(createYourAccountButton);
 	}
 }

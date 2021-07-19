@@ -1,8 +1,8 @@
-Feature: As a user I want to be able to add items to the basket
+Feature: As a user I want to see the message about successful adding of items to the basket
 
-  @Test
-  Scenario: After searching for a product, a user is able to add an item to the basket
-    Given A user is at Search Results page
-    When A user clicks on Add to Basket button
-    Then Pop-up with a success message is shown
-    And A user is able to go to Basket page by clicking on Basket-Checkout button on the pop-up
+  Scenario: After searching for a product and clicking on Add To Basket button, a user can see the message about successful adding of items to the basket
+    Given User opens Home Page
+    And User enters Lord of the Rings into the search input field
+    And User is able to click on Search button
+    When User clicks on Add to Basket button at Search Results page
+    Then Add to Basket pop-up with a success message is shown - Item added to your basket
