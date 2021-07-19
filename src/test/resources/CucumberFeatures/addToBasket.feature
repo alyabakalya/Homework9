@@ -1,5 +1,6 @@
 Feature: As a user I want to see the message about successful adding of items to the basket
 
+  @Test
   Scenario: After searching for a product and clicking on Add To Basket button, a user can see the message about successful adding of items to the basket
     Given User opens Home Page
     And User enters Lord of the Rings into the search input field

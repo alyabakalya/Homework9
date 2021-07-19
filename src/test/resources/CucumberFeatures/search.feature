@@ -1,5 +1,6 @@
 Feature: As a user I want to search products from the home page
 
+  @Test
   Scenario: After searching for a product, search results page should be displayed
     Given User is at Home Page
     When User enters lord of the rings into the search input
